@@ -21,14 +21,14 @@ describe('GithubService', () => {
   it('should get profile with success', (done: DoneFn) => {
     // Arrange
     httpClientSpy.get.and.returnValue(of({
-      login: "gpreviatti",
-      name: "Giovanni B. Previatti",
-      location: "Campinas, Sp Brazil"
+      login: "dummy",
+      name: "Dummy Dummy",
+      location: "São Paulo Brazil"
     } as User))
 
-    let login = "gpreviatti";
-    let name = "Giovanni B. Previatti";
-    let location = "Campinas, Sp Brazil";
+    let login = "dummy";
+    let name = "Dummy Dummy";
+    let location = "São Paulo Brazil";
 
     // Act, Assert
     service.GetProfile(login).subscribe(
@@ -50,10 +50,10 @@ describe('GithubService', () => {
 
     // Arrange
     httpClientSpy.get.and.returnValue(of([
-      {name: 'foo', full_name: 'gpreviatti/foo'},
-      {name: 'bar', full_name: 'gpreviatti/bar'}
+      {name: 'foo', full_name: 'dummy/foo'},
+      {name: 'bar', full_name: 'dummy/bar'}
     ] as Repository[]))
-    let login = "gpreviatti";
+    let login = "dummy";
 
     // Act, Assert
     service.GetPublicRepositories(login).subscribe(
