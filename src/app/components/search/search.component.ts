@@ -10,6 +10,11 @@ export class SearchComponent {
 
   @Output('searchResult') searchResult = new EventEmitter();
 
+  ngOnChanges() : void {
+    console.log('ngOnChanges was called');
+    console.log(this.searchInput);
+  }
+
   search() : void {
     this.searchResult.emit(this.searchInput);
   }
