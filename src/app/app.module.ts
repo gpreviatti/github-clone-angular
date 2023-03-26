@@ -6,10 +6,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { SearchComponent } from './components/search/search.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RepositoryComponent } from './components/repository/repository.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent,
+    ProfileComponent,
+    RepositoryComponent
   ],
   imports: [
     BrowserModule,
