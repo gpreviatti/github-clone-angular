@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-repository',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./repository.component.css']
 })
 export class RepositoryComponent {
+  @Input() searchInput : string = '';
+
+  ngOnChanges() : void {
+    console.log("Inside repository component: " + this.searchInput);
+  }
 
 }

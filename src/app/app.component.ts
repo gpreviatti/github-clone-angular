@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'github clone';
+  title = '🐙 Github Clone';
+  searchResult : string;
+
+  searchChanges(search : string) : void {
+    this.searchResult = search;
+  }
 }

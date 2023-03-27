@@ -1,14 +1,17 @@
-<h1>🐙 Github Clone</h1>
+<h1>{{ title }}</h1>
 
 <div class="row">
-  <app-search></app-search>
+  <app-search (searchOutput)="searchChanges($event)"></app-search>
 </div>
 
+<hr>
+
 <div class="row">
-  <app-profile searchInput="searchChanges($event)"></app-profile>
+  <app-profile [searchInput]="searchResult"></app-profile>
 </div>
 
+<hr>
 
 <div class="row">
-  <app-repository></app-repository>
+  <app-repository [searchInput]="searchResult"></app-repository>
 </div>

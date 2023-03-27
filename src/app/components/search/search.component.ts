@@ -8,14 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SearchComponent {
   searchInput : string = 'gpreviatti';
 
-  @Output('searchResult') searchResult = new EventEmitter();
-
-  ngOnChanges() : void {
-    console.log('ngOnChanges was called');
-    console.log(this.searchInput);
-  }
+  @Output() searchOutput = new EventEmitter<string>();
 
   search() : void {
-    this.searchResult.emit(this.searchInput);
+    this.searchOutput.emit(this.searchInput);
   }
 }

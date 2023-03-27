@@ -40,12 +40,12 @@ describe('SearchComponent', () => {
     expect(matInput.value).toEqual(searchInput);
   });
 
-  fit('should change search value with success', <any>fakeAsync(() => {
+  it('should change search value with success', <any>fakeAsync(() => {
     // Arrange
     let htmlElement = fixture.nativeElement as HTMLElement;
     let newValue = 'foo';
-    let searchResult = component.searchResult;
     component.searchInput = newValue;
+    let searchOutput = component.searchOutput;
 
     // Act
     // Force angular to emit the event that property changed
