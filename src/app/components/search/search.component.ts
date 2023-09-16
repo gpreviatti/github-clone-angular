@@ -6,11 +6,22 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-  searchInput : string = 'gpreviatti';
+  searchInput : string = '';
+  searchButtonDisabled : boolean = true;
 
   @Output() searchOutput = new EventEmitter<string>();
 
-  search() : void {
-    this.searchOutput.emit(this.searchInput);
+  inputChange() {
+    if (this.searchInput != '' && this.searchInput != undefined && this.searchInput != null) {
+      this.searchButtonDisabled = false;
+    } else {
+      this.searchButtonDisabled = true;
+    }
+  }
+
+  public onSearch() : void {
+    if (this.searchInput != '' && this.searchInput != undefined && this.searchInput != null) {
+      this.searchOutput.emit(this.searchInput);
+    }
   }
 }
