@@ -1,1 +1,28 @@
-<h2> Repositories </h2>
+<h2> Top 10 Repositories </h2>
+
+<div *ngIf="repositories.length > 0">
+  <table id="table-repositories">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Full Name</th>
+        <th>Private</th>
+        <th>Description</th>
+        <th>Size</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repository of repositories">
+        <td>{{ repository.id }}</td>
+        <td>{{ repository.name }}</td>
+        <td>{{ repository.full_name }}</td>
+        <td>{{ repository.private ? 'Yes' : 'No' }}</td>
+        <td>{{ repository.description }}</td>
+        <td>{{ repository.size }}</td>
+        <td><a href="{{ repository.url }}" target="_blank">{{ repository.url }}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

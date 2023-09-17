@@ -12,11 +12,11 @@ export class GithubService {
 
   constructor(private httpClient : HttpClient) { }
 
-  GetProfile(login: string) : Observable<User> {
+  getProfile(login: string) : Observable<User> {
     return this.httpClient.get<User>(this.RESOURCE_URL + "users/" + login)
   }
 
-  GetPublicRepositories(login: string) : Observable<Repository[]> {
+  getPublicRepositories(login: string) : Observable<Repository[]> {
     return this.httpClient.get<Repository[]>(this.RESOURCE_URL + "users/" + login + "/repos")
   }
 }

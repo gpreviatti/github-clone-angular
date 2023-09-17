@@ -31,7 +31,7 @@ describe('GithubService', () => {
     let location = "São Paulo Brazil";
 
     // Act, Assert
-    service.GetProfile(login).subscribe(
+    service.getProfile(login).subscribe(
       (user) => {
         expect(user).not.toBeNull;
         expect(user.login).toEqual(login);
@@ -56,7 +56,7 @@ describe('GithubService', () => {
     let login = "dummy";
 
     // Act, Assert
-    service.GetPublicRepositories(login).subscribe(
+    service.getPublicRepositories(login).subscribe(
       repositories => {
         expect(repositories).not.toBeNull;
         expect(repositories.length).toBeLessThanOrEqual(2);
