@@ -35,58 +35,58 @@ describe('SearchComponent', () => {
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
-    expect(label?.innerHTML).toContain('Github Profile:')
-    expect(input.value).toEqual(component.searchInput)
-    expect(button?.innerHTML).toContain('Search')
-    expect(button.disabled).toBeTruthy()
+    expect(component).toBeTruthy();
+    expect(label?.innerHTML).toContain('Github Profile:');
+    expect(input.value).toEqual(component.searchInput);
+    expect(button?.innerHTML).toContain('Search');
+    expect(button.disabled).toBeTruthy();
   })
 
   it('should change search value with success', <any>fakeAsync(() => {
     // Arrange
-    const newValue = input.value = 'foo'
+    const newValue = input.value = 'foo';
 
     // Act
     // Dispatch a DOM event so that Angular responds to the input value change.
-    input.dispatchEvent(new Event('input'))
+    input.dispatchEvent(new Event('input'));
 
     // Force angular to emit the event that property changed
-    fixture.detectChanges()
+    fixture.detectChanges();
 
     // Assert
-    expect(component.searchInput).toEqual(newValue)
-    expect(button.disabled).toBeFalsy()
+    expect(component.searchInput).toEqual(newValue);
+    expect(button.disabled).toBeFalsy();
   }))
 
   it('should not enable search button when input is null', <any>fakeAsync(() => {
     // Arrange
-    const newValue = input.value = ''
+    // const newValue = input.value = '';
 
     // Act
     // Dispatch a DOM event so that Angular responds to the input value change.
-    input.dispatchEvent(new Event('input'))
+    input.dispatchEvent(new Event('input'));
 
     // Force angular to emit the event that property changed
-    fixture.detectChanges()
+    fixture.detectChanges();
 
     // Assert
-    expect(component.searchInput).toEqual(newValue)
-    expect(button.disabled).toBeTruthy()
+    expect(component.searchInput).toEqual('');
+    expect(button.disabled).toBeTruthy();
   }))
 
   it('should emit event when click button with success', <any>fakeAsync(() => {
     // Arrange
-    const newValue = input.value = 'johnDoe'
-    spyOn(component.searchOutput, 'emit')
+    const newValue = input.value = 'johnDoe';
+    spyOn(component.searchOutput, 'emit');
 
     // Act
     // Dispatch a DOM event so that Angular responds to the input value change.
-    input.dispatchEvent(new Event('input'))
+    input.dispatchEvent(new Event('input'));
 
     // Force angular to emit the event that property changed
-    fixture.detectChanges()
+    fixture.detectChanges();
 
-    button.dispatchEvent(new Event('click'))
+    button.dispatchEvent(new Event('click'));
 
     // Assert
     expect(component.searchInput).toEqual(newValue)
