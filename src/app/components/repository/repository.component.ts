@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Repository } from 'src/app/models/repository';
 import { GithubService } from 'src/app/services/github.service';
 
@@ -12,7 +13,10 @@ export class RepositoryComponent {
 
   repositories : Repository[] = [];
 
-  constructor(public service : GithubService) {}
+  constructor(
+    public service : GithubService,
+    public spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() : void {
     if (this.searchInput != '' && this.searchInput != null) {
@@ -25,9 +29,17 @@ export class RepositoryComponent {
   }
 
   getRepositories() : void {
+    this.spinner.show();
     this.service.getPublicRepositories(this.searchInput).subscribe({
-      next: response => this.repositories = response,
-      error: error => console.error(error)
+      next: response => {
+        this.repositories = response;
+        this.spinner.hide();
+      },
+      error: error => {
+        console.error(error)
+        this.repositories = [];
+        this.spinner.hide();
+      }
     })
   }
 }
