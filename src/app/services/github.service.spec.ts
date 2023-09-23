@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { of } from "rxjs";
 import { Repository } from "../models/repository";
-import { User } from '../models/user';
+import { Profile } from '../models/profile';
 
 import { GithubService } from './github.service';
 
@@ -24,24 +24,24 @@ describe('GithubService', () => {
       login: "dummy",
       name: "Dummy Dummy",
       location: "São Paulo Brazil"
-    } as User))
+    } as Profile))
 
     let login = "dummy";
     let name = "Dummy Dummy";
     let location = "São Paulo Brazil";
 
     // Act, Assert
-    service.getProfile(login).subscribe(
-      (user) => {
-        expect(user).not.toBeNull;
-        expect(user.login).toEqual(login);
-        expect(user.name).toEqual(name);
-        expect(user.location).toEqual(location);
+    service.getProfile(login).subscribe({
+      next: response => {
+        expect(response).not.toBeNull;
+        expect(response.login).toEqual(login);
+        expect(response.name).toEqual(name);
+        expect(response.location).toEqual(location);
 
         done();
       },
-      error => done.fail()
-    );
+      error: () => done.fail()
+    });
 
     expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
   });
@@ -56,15 +56,15 @@ describe('GithubService', () => {
     let login = "dummy";
 
     // Act, Assert
-    service.getPublicRepositories(login).subscribe(
-      repositories => {
-        expect(repositories).not.toBeNull;
-        expect(repositories.length).toBeLessThanOrEqual(2);
+    service.getPublicRepositories(login).subscribe({
+      next: response => {
+        expect(response).not.toBeNull;
+        expect(response.length).toBeLessThanOrEqual(2);
 
         done();
       },
-      () => done.fail()
-    );
+      error: () => done.fail()
+    });
 
     expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
   });

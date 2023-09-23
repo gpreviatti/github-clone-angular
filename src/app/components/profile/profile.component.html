@@ -1,1 +1,30 @@
 <h2> Profile Information </h2>
+
+<div *ngIf="hasSearch()" class="information-div">
+    <div>
+      <img id="avatar-image" [src]="profile.avatar_url"/>
+    </div>
+
+    <div>
+      <h3> Personal Information </h3>
+
+      <label id="profile-id">{{ profile.id }}</label>
+      |
+      <label id="name">{{ profile.name }}</label>
+      |
+      <label id="login">{{ profile.login }}</label>
+    </div>
+
+    <div>
+      <h3> Professional Information </h3>
+
+      <label id="email">{{ profile.email }}</label>
+      |
+      <label id="company">{{ profile.company }}</label>
+      |
+      <label id="location">{{ profile.location }}</label>
+
+    </div>
+</div>
+
+

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Repository } from '../models/repository';
-import { User } from '../models/user';
+import { Profile } from '../models/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class GithubService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getProfile(login: string) : Observable<User> {
-    return this.httpClient.get<User>(this.RESOURCE_URL + "users/" + login)
+  getProfile(login: string) : Observable<Profile> {
+    return this.httpClient.get<Profile>(this.RESOURCE_URL + "users/" + login)
   }
 
   getPublicRepositories(login: string) : Observable<Repository[]> {
